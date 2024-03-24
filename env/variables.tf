@@ -14,24 +14,18 @@ variable "settings" {
     "database" = {
       "allocated_storage"   = 20
       "db_port"             = 3306
-      "db_name_order"       = "fiap_db"
+      "db_name"             = "fiap_db"
       "engine"              = "mysql"
-      "engine_version"      = "8.0.35"
-      "instance_class"      = "db.t2.micro"
+      "engine_version"      = "8.0.36"
+      "instance_class"      = "db.t3.micro"
       "skip_final_snapshot" = true
       "publicly_accessible" = true
       "multi_az"            = false
-      "identifier_order"    = "fiap-db-order"
+      "identifier"          = "fiap-db"
     }
     "subnet" = {
       "count"                   = 2
       "map_public_ip_on_launch" = true
-    }
-    "lambda" = {
-      "filename"      = "lambda.zip"
-      "function_name" = "fiap-auth"
-      "handler"       = "index.handler"
-      "runtime"       = "nodejs18.x"
     }
   }
 }
@@ -208,15 +202,3 @@ variable "securiry_group_name_ecs_production" {
   type        = string
   default     = "FIAP-ECS-PRODUCTION"
 }
-
-
-
-
-
-
-# variable "vpc_security_group_ids" {
-#   description = "List of VPC security group IDs for the DocumentDB cluster"
-#   type        = list(string)
-# }
-
-
